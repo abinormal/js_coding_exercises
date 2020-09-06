@@ -1,11 +1,21 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  // Your code here!
+  // parse array, get square of each number, save to same array location
+  for (var i = 0; i<nums.length ; i++){
+    var square = nums[i]*nums[i];
+    nums[i] = square;
+  }
+  return nums;
 }
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Your code here!
+  //for loop skipping the first entry
+  var camCase = words[0];
+  for (var i = 1 ; i<words.length ; i++) {
+    camCase += words[i].substring(0,1).toUpperCase() + words[i].substring(1,words[i].length);
+  }
+  return camCase;
 }
 
 function getTotalSubjects(people) {
