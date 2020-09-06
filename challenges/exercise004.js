@@ -108,7 +108,20 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+  var aLong =[];
+  
+  for (var i = 0; i<triangles.length ; i++){
+    var largest = 0;
+    for (var j =0; j<triangles[i].length ; j++){
+      if (triangles[j]>largest)
+        largest = triangles[j];
+    }
+    //OMG I only just saw that- I knew there must be a better way.
+    //I have so much to learn!! 
+    //TODO - edit out the embarrassment later
+    aLong.push(largest);
+  }
+  return aLong;
 }
 
 module.exports = {
