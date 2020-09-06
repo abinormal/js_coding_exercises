@@ -94,7 +94,26 @@ function getMeanScore(scores) {
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  // Add your code here!
+  var fizz = false;
+  var buzz = false;
+  //if it can be divided by 3 - fizz
+  if (Number.isInteger(n/3))
+    fizz = true;
+
+  //if it can be divided by 5 - buzz
+  if (Number.isInteger(n/5))
+    buzz = true;
+
+  //both - fizzbuzz    
+  if (fizz & buzz)
+    return "fizzbuzz";  
+  if (fizz)
+    return "fizz";
+  if (buzz)
+    return "buzz";
+  
+  //neither - return number
+  return n;
 }
 
 module.exports = {
