@@ -6,20 +6,30 @@ function capitalize(word) {
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-
   return firstName.substring(0,1) + '.' + lastName.substring(0,1);
 }
 
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+  
+  var vat = (originalPrice/100)*vatRate;
+  var total = originalPrice + vat;
+  //test for a double - scratches head. 
+  //Going to delete this part - was trying to test for a double and just truncate that.
+//  if (total % 1 == 0) {
+//    return total;  
+//  } else {  
+    // push string back into a number as test complains about quotation marks
+    return parseFloat(total.toFixed(2));  
+//  }  
 }
 
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  // Add your code here!
+  var percentage = (originalPrice/100)*reduction;
+  return originalPrice - percentage;
 }
 
 function getMiddleCharacter(str) {
