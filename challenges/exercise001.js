@@ -35,7 +35,7 @@ function getMiddleCharacter(str) {
 
   //Find the middle value
   var middle = len/2;
-  
+
   //find even and odd
   if (Number.isInteger(middle) ) {
     // if even give two middle letters
@@ -48,12 +48,20 @@ function getMiddleCharacter(str) {
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+  return word.split("").reverse().join("");
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Add your code here!
+  
+  //For each word in words
+  for (var i = 0 ; i < words.length ; i++) {
+    //Pull out the string
+    var string = words[i];
+    //Edit and save to array
+    words[i] = string.split("").reverse().join("");
+  }
+  return words;
 }
 
 function countLinuxUsers(users) {
