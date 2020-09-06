@@ -32,13 +32,18 @@ function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   //Get string length
   var len = str.length;
-  //test for even or odd length
-  if ((len/2).isInteger() ) {
-    //if even give middle two letters
+
+  //Find the middle value
+  var middle = len/2;
+  
+  //find even and odd
+  if (Number.isInteger(middle) ) {
+    // if even give two middle letters
+     return str.substring(middle-1,middle+1);
   } else {
     //if odd give single middle letter
+    return str.substring(middle,middle+1);
   }
-
 }
 
 function reverseWord(word) {
