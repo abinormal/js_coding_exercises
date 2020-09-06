@@ -20,7 +20,17 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  var iSubjects = 0;
+  // for each person count how many entries in subjects arr
+  for (var i = 0; i<people.length ; i++){
+    //console.log("Subjects: " + people[i].subjects);
+    for (var j = 0 ; j<people[i].subjects.length ; j++) {
+      //if array not empty then ++
+      iSubjects++;
+    }
+  }
+return iSubjects;
+//console.log("Subjects: " + iSubjects);
 }
 
 function checkIngredients(menu, ingredient) {
