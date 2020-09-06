@@ -63,22 +63,38 @@ const sumArrays = arrs => {
   for (var i=0; i<arrs.length;i++){
     for (var j=0; j<arrs[i].length;j++){
       total += arrs[i].[j];
-
     }
-
   }
   return total;
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  
+  //Save first item in temp
+  if (arr.length >= 2){
+    var temp = arr[0];
+
+    //save last to first
+    arr[0] = arr[arr.length-1];
+
+    //put first into last
+    arr[arr.length-1] = temp;
+  }
+  return arr;
 };
 
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
+  // Treat it as two arrays. non case sensitive string search.
+  for (var i = 0; i<haystack.length; i++){
+    for (var j=0; j<haystack[i].length ; j++){
+      if (haystack[i].[j].toLowerCase().includes(searchTerm) )
+        return true;
+    }
+  }
+  return false;
 };
 
 const getWordFrequencies = str => {
