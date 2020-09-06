@@ -15,21 +15,17 @@ function addVAT(originalPrice, vatRate) {
   
   var vat = (originalPrice/100)*vatRate;
   var total = originalPrice + vat;
-  //test for a double - scratches head. 
-  //Going to delete this part - was trying to test for a double and just truncate that.
-//  if (total % 1 == 0) {
-//    return total;  
-//  } else {  
-    // push string back into a number as test complains about quotation marks
-    return parseFloat(total.toFixed(2));  
-//  }  
+
+  // push string back into a number as test complains about quotation marks
+  return parseFloat(total.toFixed(2));  
 }
 
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
   var percentage = (originalPrice/100)*reduction;
-  return originalPrice - percentage;
+  var newPrice = originalPrice - percentage;
+  return parseFloat(newPrice.toFixed(2));;
 }
 
 function getMiddleCharacter(str) {
