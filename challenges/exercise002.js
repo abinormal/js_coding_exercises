@@ -20,7 +20,13 @@ function getBusNumbers(people) {
 
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  // const arr = ["dog", "badger", "dog", "dog", "chicken"];
+  var iSheep = 0;
+  for (var i = 0; i<arr.length ; i++){
+    if (arr[i] == "sheep")
+      iSheep++;
+  }
+  return iSheep;
 }
 
 function hasMPostCode(person) {
