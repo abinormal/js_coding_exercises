@@ -87,19 +87,59 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Treat it as two arrays. non case sensitive string search.
-  for (var i = 0; i<haystack.length; i++){
-    for (var j=0; j<haystack[i].length ; j++){
-      if (haystack[i].[j].toLowerCase().includes(searchTerm) )
-        return true;
-    }
+  
+  
+  console.log("###Start to Search for "+ searchTerm);
+
+  for (var key in haystack) {
+      if (Object.prototype.hasOwnProperty.call(haystack, key)) { 
+          var val = haystack[key];
+          //check for string before .toUpperCase()
+          if (typeof val === 'string' || val instanceof String) {            
+            var temp = val.toUpperCase();
+            val = temp;
+          }  
+          if (typeof searchTerm === 'string' || searchTerm instanceof String) {  
+            var temp = searchTerm.toUpperCase();
+            searchTerm = temp;
+          }  
+          //console.log("Val: "+ val);
+          //Compare string
+          //TODO: Change this to search val for searchTerm
+          if (val == searchTerm)  {
+            //console.log("TRUE!!");
+            return true;
+          } else {
+            //console.log("FALSE!");
+          }
+      }
   }
+
   return false;
 };
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  
+  var obj = {};
+
+  //splice string into array 
+  var splitString = str.split(" ");
+  //count through each
+  for (var i=0 ; i<splitString.length ; i++){
+    //note words and frequencies
+    if (splitString[0]){
+      //obj['property_name'] = 'some_value';
+      obj[splitString[0]] = 1;
+    } else {
+      //check obj for property names matching the next item in splitString
+      //if found add 1 to existing
+      //otherwise 
+      //create a new poperty in obj.
+    }
+    
+  }
+  return obj;
 };
 
 module.exports = {
