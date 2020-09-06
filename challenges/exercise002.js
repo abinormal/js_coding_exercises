@@ -31,7 +31,12 @@ function countSheep(arr) {
 
 function hasMPostCode(person) {
   if (person === undefined) throw new Error("person is required");
-  // Your code here!
+  // Note to self: remember to check the Case and the nesting!
+  if ((person.address.postCode.substring(0,1) == "M") && (person.address.city == "Manchester") ) {
+    return true;
+  } else {
+    return false;
+  }  
 }
 
 module.exports = {
