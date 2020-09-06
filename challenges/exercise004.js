@@ -47,6 +47,16 @@ function findVerbs(words) {
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
   
+  var aIntegers = [];
+  var index =0;
+
+  for(var i=0; i<nums.length; i++){
+    if (Number.isInteger(nums[i])){
+      aIntegers[index] = nums[i];
+      index++;
+    }
+  }
+  return aIntegers;
 }
 
 function getCities(users) {
