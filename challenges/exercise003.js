@@ -51,7 +51,36 @@ function checkIngredients(menu, ingredient) {
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Your code here!
+  // Return array of duplicate numbers found in an array
+
+  var aDuplicates = [];
+  var iDupCount = 0;
+
+  for (var i = 0 ; i <arr1.length ; i++){
+    for (var j = 0 ; j <arr2.length ; j++){
+      // check for duplicate
+      if (arr1[i]==arr2[j]){
+        console.log("a Match!");
+        // Check if it's the first entry in the array.
+        if (iDupCount == 0){
+          aDuplicates[iDupCount] = arr1[i];
+          iDupCount++;
+        } else {
+          for (var k = 0; k < aDuplicates.length ; k++){
+            console.log("checking for duplicates in aDupe");
+            if (aDuplicates[k]==arr1[i]) {
+              continue;
+            } else {
+              aDuplicates[iDupCount] = arr1[i];
+              iDupCount++;
+            }
+          }
+        }
+      }  
+    }
+  }
+
+  return aDuplicates.sort();
 }
 
 module.exports = {
