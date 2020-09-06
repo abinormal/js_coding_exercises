@@ -13,7 +13,9 @@ function isFromManchester(person) {
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  // A bus can hold 40 people. This function should return how many buses are required for the number of people
+  // Divide and round up
+  return Math.ceil(people/40);
 }
 
 function countSheep(arr) {
