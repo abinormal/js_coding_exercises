@@ -25,7 +25,7 @@ function getSalePrice(originalPrice, reduction) {
   if (reduction === undefined) throw new Error("reduction is required");
   var percentage = (originalPrice/100)*reduction;
   var newPrice = originalPrice - percentage;
-  return parseFloat(newPrice.toFixed(2));;
+  return parseFloat(newPrice.toFixed(2));
 }
 
 function getMiddleCharacter(str) {
@@ -66,7 +66,15 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+  var linuxUsers = 0;
+  //Get each one check for type = "linux"
+  for (var i = 0 ; i<users.length; i++) {
+   //console.log("Get type: ", users[i].type);
+    if (users[i].type == "Linux") {
+      linuxUsers++;
+    }  
+  }
+  return linuxUsers;
 }
 
 function getMeanScore(scores) {
