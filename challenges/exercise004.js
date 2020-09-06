@@ -75,13 +75,35 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+
+  var aSquares = [];
+  var index =0;
+
+  for(var i = 0; i<nums.length ; i++){
+    //console.log("count: "+ i);
+    aSquares[index] = Math.sqrt(nums);
+    index++;
+  }
+  return aSquares;
 }
 
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  
+  //for each sentence find string within and return whole sentence.
+
+  var aSent = [];
+  var index = 0;
+
+  for (var i=0;i<sentences.length;i++){
+    if (sentences[i].toLowerCase().includes(str) ) {
+      console.log("Found text: "+ str + " in " + sentences[i]);
+      aSent[index] = sentences[i];
+      index++;
+    }
+  }
+  return aSent;
 }
 
 function getLongestSides(triangles) {
