@@ -62,7 +62,7 @@ const sumArrays = arrs => {
 
   for (var i=0; i<arrs.length;i++){
     for (var j=0; j<arrs[i].length;j++){
-      total += arrs[i].[j];
+      total += arrs[i][j];
     }
   }
   return total;
@@ -88,8 +88,7 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   
-  
-  console.log("###Start to Search for "+ searchTerm);
+  //console.log("###Start to Search for "+ searchTerm);
 
   for (var key in haystack) {
       if (Object.prototype.hasOwnProperty.call(haystack, key)) { 
@@ -100,8 +99,8 @@ const findNeedle = (haystack, searchTerm) => {
             val = temp;
           }  
           if (typeof searchTerm === 'string' || searchTerm instanceof String) {  
-            var temp = searchTerm.toUpperCase();
-            searchTerm = temp;
+            var temp1 = searchTerm.toUpperCase();
+            searchTerm = temp1;
           }  
           //console.log("Val: "+ val);
           //Compare string

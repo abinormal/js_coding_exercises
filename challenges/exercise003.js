@@ -86,7 +86,7 @@ function duplicateNumbers(arr1, arr2) {
       }  
     }
   }
-  console.log(aDuplicates);
+  //console.log(aDuplicates);
   return aDuplicates.sort();
 }
 

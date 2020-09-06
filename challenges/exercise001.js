@@ -85,7 +85,6 @@ function getMeanScore(scores) {
   for (var i = 0 ; i<scores.length; i++) {
     total+=scores[i];
   }
-
   var average = total / scores.length;
 
   //truncate the trailing values

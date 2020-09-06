@@ -98,7 +98,7 @@ function findSentencesContaining(sentences, str) {
 
   for (var i=0;i<sentences.length;i++){
     if (sentences[i].toLowerCase().includes(str) ) {
-      console.log("Found text: "+ str + " in " + sentences[i]);
+      //console.log("Found text: "+ str + " in " + sentences[i]);
       aSent[index] = sentences[i];
       index++;
     }
