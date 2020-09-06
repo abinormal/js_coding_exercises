@@ -1,7 +1,23 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
+  
+  //Find a number in array, return next number or null
+
+  //for each number 
+  for (var i =0; i<nums.length ; i++){
+    //Check if it's the one we want
+    if (nums[i] == n) {
+      //return next - check there is a next
+      if (i == nums.length-1){
+        // Last array item
+        return null;
+      } else { 
+      return nums[i+1];
+      }
+    }
+  }
+  return null;
 };
 
 const count1sand0s = str => {
