@@ -56,20 +56,27 @@ function duplicateNumbers(arr1, arr2) {
   var aDuplicates = [];
   var iDupCount = 0;
 
+  //well I have done it the hard way
+
   for (var i = 0 ; i <arr1.length ; i++){
     for (var j = 0 ; j <arr2.length ; j++){
       // check for duplicate
       if (arr1[i]==arr2[j]){
-        console.log("a Match!");
+        //console.log("a Match!");
         // Check if it's the first entry in the array.
         if (iDupCount == 0){
           aDuplicates[iDupCount] = arr1[i];
           iDupCount++;
         } else {
+          // Check for duplicates
+
           for (var k = 0; k < aDuplicates.length ; k++){
-            console.log("checking for duplicates in aDupe");
+            //console.log("checking for duplicates in aDupe");
+
+            //Something is wrong here - all duplicates are added.
+            //TODO
             if (aDuplicates[k]==arr1[i]) {
-              continue;
+              // Do nothing
             } else {
               aDuplicates[iDupCount] = arr1[i];
               iDupCount++;
@@ -79,7 +86,7 @@ function duplicateNumbers(arr1, arr2) {
       }  
     }
   }
-
+  console.log(aDuplicates);
   return aDuplicates.sort();
 }
 
