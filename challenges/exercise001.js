@@ -13,8 +13,8 @@ function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
   
-  var vat = (originalPrice/100)*vatRate;
-  var total = originalPrice + vat;
+  let vat = (originalPrice/100)*vatRate;
+  let total = originalPrice + vat;
 
   // push string back into a number as test complains about quotation marks
   return parseFloat(total.toFixed(2));  
@@ -23,18 +23,18 @@ function addVAT(originalPrice, vatRate) {
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  var percentage = (originalPrice/100)*reduction;
-  var newPrice = originalPrice - percentage;
+  let percentage = (originalPrice/100)*reduction;
+  let newPrice = originalPrice - percentage;
   return parseFloat(newPrice.toFixed(2));
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   //Get string length
-  var len = str.length;
+  let len = str.length;
 
   //Find the middle value
-  var middle = len/2;
+  let middle = len/2;
 
   //find even and odd
   if (Number.isInteger(middle) ) {
@@ -55,9 +55,9 @@ function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   
   //For each word in words
-  for (var i = 0 ; i < words.length ; i++) {
+  for (let i = 0 ; i < words.length ; i++) {
     //Pull out the string
-    var string = words[i];
+    let string = words[i];
     //Edit and save to array
     words[i] = string.split("").reverse().join("");
   }
@@ -66,9 +66,9 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  var linuxUsers = 0;
+  let linuxUsers = 0;
   //Get each one check for type = "linux"
-  for (var i = 0 ; i<users.length; i++) {
+  for (let i = 0 ; i<users.length; i++) {
    //console.log("Get type: ", users[i].type);
     if (users[i].type == "Linux") {
       linuxUsers++;
@@ -79,13 +79,13 @@ function countLinuxUsers(users) {
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  var total = 0; 
+  let total = 0; 
 
   //Add all the scores.
-  for (var i = 0 ; i<scores.length; i++) {
+  for (let i = 0 ; i<scores.length; i++) {
     total+=scores[i];
   }
-  var average = total / scores.length;
+  let average = total / scores.length;
 
   //truncate the trailing values
   return parseFloat(average.toFixed(2));
@@ -93,8 +93,8 @@ function getMeanScore(scores) {
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  var fizz = false;
-  var buzz = false;
+  let fizz = false;
+  let buzz = false;
   //if it can be divided by 3 - fizz
   if (Number.isInteger(n/3))
     fizz = true;

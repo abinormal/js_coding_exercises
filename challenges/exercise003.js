@@ -1,8 +1,8 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
   // parse array, get square of each number, save to same array location
-  for (var i = 0; i<nums.length ; i++){
-    var square = nums[i]*nums[i];
+  for (let i = 0; i<nums.length ; i++){
+    let square = nums[i]*nums[i];
     nums[i] = square;
   }
   return nums;
@@ -11,8 +11,8 @@ function getSquares(nums) {
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
   //for loop skipping the first entry
-  var camCase = words[0];
-  for (var i = 1 ; i<words.length ; i++) {
+  let camCase = words[0];
+  for (let i = 1 ; i<words.length ; i++) {
     camCase += words[i].substring(0,1).toUpperCase() + words[i].substring(1,words[i].length);
   }
   return camCase;
@@ -20,11 +20,11 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  var iSubjects = 0;
+  let iSubjects = 0;
   // for each person count how many entries in subjects arr
-  for (var i = 0; i<people.length ; i++){
+  for (let i = 0; i<people.length ; i++){
     //console.log("Subjects: " + people[i].subjects);
-    for (var j = 0 ; j<people[i].subjects.length ; j++) {
+    for (let j = 0 ; j<people[i].subjects.length ; j++) {
       //if array not empty then ++
       iSubjects++;
     }
@@ -37,10 +37,10 @@ function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   // given menu (array) check for ingredient
-  var foundIt = false;
+  let foundIt = false;
 
-  for (var i = 0 ; i<menu.length ; i++){
-    for (var j = 0 ; j<menu[i].ingredients.length ; j++) {
+  for (let i = 0 ; i<menu.length ; i++){
+    for (let j = 0 ; j<menu[i].ingredients.length ; j++) {
       if (menu[i].ingredients[j] == ingredient)
         foundIt = true;
     }
@@ -53,13 +53,13 @@ function duplicateNumbers(arr1, arr2) {
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Return array of duplicate numbers found in an array
 
-  var aDuplicates = [];
-  var iDupCount = 0;
+  let aDuplicates = [];
+  let iDupCount = 0;
 
   //well I have done it the hard way
 
-  for (var i = 0 ; i <arr1.length ; i++){
-    for (var j = 0 ; j <arr2.length ; j++){
+  for (let i = 0 ; i <arr1.length ; i++){
+    for (let j = 0 ; j <arr2.length ; j++){
       // check for duplicate
       if (arr1[i]==arr2[j]){
         //console.log("a Match!");
@@ -70,7 +70,7 @@ function duplicateNumbers(arr1, arr2) {
         } else {
           // Check for duplicates
 
-          for (var k = 0; k < aDuplicates.length ; k++){
+          for (let k = 0; k < aDuplicates.length ; k++){
             //console.log("checking for duplicates in aDupe");
 
             //Something is wrong here - all duplicates are added.

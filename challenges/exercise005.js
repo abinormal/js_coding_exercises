@@ -5,7 +5,7 @@ const findNextNumber = (nums, n) => {
   //Find a number in array, return next number or null
 
   //for each number 
-  for (var i =0; i<nums.length ; i++){
+  for (let i =0; i<nums.length ; i++){
     //Check if it's the one we want
     if (nums[i] == n) {
       //return next - check there is a next
@@ -24,12 +24,12 @@ const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
   //Count 1s and 0s - return result in object
 
-  var count = {
+  let count = {
     0: 0,
     1: 0
   };
 
-  for (var i=0; i<str.length ; i++){
+  for (let i=0; i<str.length ; i++){
     if (str.substring(i,i+1) == 1 ){
       count[1] += 1;
     } else {
@@ -42,14 +42,14 @@ const count1sand0s = str => {
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
   
-  var z = n;
-  var reverse = 0;
+  let z = n;
+  let reverse = 0;
 
   while(z > 0)
   {
-      var digit = z % 10;
-      reverse = (reverse * 10) + digit;
-      z = parseInt(z / 10);
+    let digit = z % 10;
+    reverse = (reverse * 10) + digit;
+    z = parseInt(z / 10);
   }
   return reverse;
 
@@ -58,10 +58,10 @@ const reverseNumber = n => {
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
   
-  var total = 0;
+  let total = 0;
 
-  for (var i=0; i<arrs.length;i++){
-    for (var j=0; j<arrs[i].length;j++){
+  for (let i=0; i<arrs.length;i++){
+    for (let j=0; j<arrs[i].length;j++){
       total += arrs[i][j];
     }
   }
@@ -73,7 +73,7 @@ const arrShift = arr => {
   
   //Save first item in temp
   if (arr.length >= 2){
-    var temp = arr[0];
+    let temp = arr[0];
 
     //save last to first
     arr[0] = arr[arr.length-1];
@@ -90,16 +90,16 @@ const findNeedle = (haystack, searchTerm) => {
   
   //console.log("###Start to Search for "+ searchTerm);
 
-  for (var key in haystack) {
+  for (let key in haystack) {
       if (Object.prototype.hasOwnProperty.call(haystack, key)) { 
-          var val = haystack[key];
+          let val = haystack[key];
           //check for string before .toUpperCase()
           if (typeof val === 'string' || val instanceof String) {            
-            var temp = val.toUpperCase();
+            let temp = val.toUpperCase();
             val = temp;
           }  
           if (typeof searchTerm === 'string' || searchTerm instanceof String) {  
-            var temp1 = searchTerm.toUpperCase();
+            let temp1 = searchTerm.toUpperCase();
             searchTerm = temp1;
           }  
           //console.log("Val: "+ val);
@@ -120,12 +120,12 @@ const findNeedle = (haystack, searchTerm) => {
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
   
-  var obj = {};
+  let obj = {};
 
   //splice string into array 
-  var splitString = str.split(" ");
+  let splitString = str.split(" ");
   //count through each
-  for (var i=0 ; i<splitString.length ; i++){
+  for (let i=0 ; i<splitString.length ; i++){
     //note words and frequencies
     if (splitString[0]){
       //obj['property_name'] = 'some_value';
