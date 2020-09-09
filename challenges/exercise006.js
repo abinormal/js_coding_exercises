@@ -6,6 +6,11 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  // for each number in array
+  // check is multiple
+  // if it is add the number to the total
+  // return total
+
 };
 
 /**

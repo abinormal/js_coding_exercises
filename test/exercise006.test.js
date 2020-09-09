@@ -15,29 +15,34 @@ const {
  */
   describe("sumMultiples", () => {
     test("reverses the digits of a number", () => {
-      expect(sumMultiples(5)).toBe(5);
-      expect(sumMultiples(104)).toBe(401);
-      expect(sumMultiples(12345)).toBe(54321);
-      expect(sumMultiples(100)).toBe(1); 
+      expect(sumMultiples([3, 5, 6])).toBe(14);
+      expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
+      expect(sumMultiples([])).toBe(0); //Given an empty array
+      //Could give array of strings to really mess it up.
     });
   });
 
 /**
- * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
+ * This function will receive a string of characters and should return 
+ * true/false depending on whether it is a valid DNA string. A valid DNA 
+ * string may contain characters C, G, T or A only.
  * @param {String} str
  * @returns {Boolean}
  */
   describe("isValidDNA", () => {
     test("reverses the digits of a number", () => {
-      expect(isValidDNA(5)).toBe(5);
-      expect(isValidDNA(104)).toBe(401);
-      expect(isValidDNA(12345)).toBe(54321);
-      expect(isValidDNA(100)).toBe(1); 
+      expect(isValidDNA("CGTCAACGTAAATGCGTA")).toBe(true);
+      expect(isValidDNA("CCTTGACTAGTHGCTAGC")).toBe(false);
+      expect(isValidDNA("agctcgatcg")).toBe(true); //unless we do case about case
+      expect(isValidDNA("Hello")).toBe(false);
     });
   });
 
 /**
- * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
+ * This function will receive a valid DNA string (see above) and should 
+ * return a string of the complementary base pairs. In DNA, T always pairs 
+ * with A, and C always pairs with G. So a string of "ACTG" would have a 
+ * complementary DNA string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
