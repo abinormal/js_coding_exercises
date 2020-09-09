@@ -48,10 +48,10 @@ const {
  */
   describe("getComplementaryDNA", () => {
     test("reverses the digits of a number", () => {
-      expect(getComplementaryDNA(5)).toBe(5);
-      expect(getComplementaryDNA(104)).toBe(401);
-      expect(getComplementaryDNA(12345)).toBe(54321);
-      expect(getComplementaryDNA(100)).toBe(1); 
+      expect(getComplementaryDNA("TCGA")).toBe("AGCT");
+      expect(getComplementaryDNA("TTCCGGAA")).toBe("AAGGCCTT");
+      expect(getComplementaryDNA("")).toBe(""); //fill this in
+      expect(getComplementaryDNA("")).toBe(""); //Empty returns empty 
     });
   });
 
