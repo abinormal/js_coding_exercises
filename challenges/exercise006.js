@@ -6,11 +6,19 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  
+  let total = 0;
   // for each number in array
-  // check is multiple
-  // if it is add the number to the total
-  // return total
+  for (let i=0; i<arr; i++){
+    // check is multiple of 3
+    if (! (arr[i] % 3)){
+       total = total + arr[i];
+    } else if (! (arr[i] % 5)){
+      total = total + arr[i];
+    } 
 
+  }
+  return total;
 };
 
 /**
