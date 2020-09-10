@@ -9,10 +9,10 @@ const sumMultiples = arr => {
   
   let total = 0;
   // for each number in array
-  for (let i=0; i<arr; i++){
+  for (let i=0; i<arr.length; i++){
     // check is multiple of 3
     if (! (arr[i] % 3)){
-       total = total + arr[i];
+      total = total + arr[i];
     } else if (! (arr[i] % 5)){
       total = total + arr[i];
     } 
