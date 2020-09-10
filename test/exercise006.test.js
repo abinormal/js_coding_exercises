@@ -50,27 +50,34 @@ const {
     test("reverses the digits of a number", () => {
       expect(getComplementaryDNA("TCGA")).toBe("AGCT");
       expect(getComplementaryDNA("TTCCGGAA")).toBe("AAGGCCTT");
-      expect(getComplementaryDNA("")).toBe(""); //fill this in
+      expect(getComplementaryDNA("TGACTCGATC")).toBe("ACTGAGCTAG"); //fill this in
       expect(getComplementaryDNA("")).toBe(""); //Empty returns empty 
     });
   });
 
 /**
- * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
+ * This function should receive a number and return true/false depending on whether 
+ * it is a prime number or not. A prime number is a number that can only be divided 
+ * evenly by 1 and itself (for example, 7)
  * @param {Number} n
  * @returns {Boolean}
  */
   describe("isItPrime", () => {
     test("reverses the digits of a number", () => {
-      expect(isItPrime(5)).toBe(5);
-      expect(isItPrime(104)).toBe(401);
-      expect(isItPrime(12345)).toBe(54321);
-      expect(isItPrime(100)).toBe(1); 
+      expect(isItPrime(7)).toBe(true);
+      expect(isItPrime(3)).toBe(true);
+      expect(isItPrime(19)).toBe(true);
+      expect(isItPrime(6911)).toBe(true);
+      expect(isItPrime(6912)).toBe(false);
+      expect(isItPrime(12)).toBe(false); 
+      expect(isItPrime(1)).toBe(false); // 1 isn't thought of as a prime number
     });
   });
 
 /**
- * This function should receive a number and return an array of n arrays, each filled with n items. The parameter "fill" should be used as the filler of the arrays. For example, given parameters 3 and "foo" the resulting matrix should be:
+ * This function should receive a number and return an array of n arrays, each filled 
+ * with n items. The parameter "fill" should be used as the filler of the arrays. For 
+ * example, given parameters 3 and "foo" the resulting matrix should be:
  * [
  *   ["foo", "foo", "foo"],
  *   ["foo", "foo", "foo"],
@@ -82,10 +89,10 @@ const {
  */
   describe("createMatrix", () => {
     test("reverses the digits of a number", () => {
-      expect(createMatrix(5)).toBe(5);
-      expect(createMatrix(104)).toBe(401);
-      expect(createMatrix(12345)).toBe(54321);
-      expect(createMatrix(100)).toBe(1); 
+      expect(createMatrix(3, "foo")).toBe([["foo", "foo", "foo"],["foo", "foo", "foo"],["foo", "foo", "foo"]]);
+      expect(createMatrix(2, 34)).toBe([[34,34][34,34]]);
+      expect(createMatrix(6,"Eureka!")).toBe([["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"]]);
+      expect(createMatrix(3,["do","be","do"])).toBe([["do","be","do"], ["do","be","do"], ["do","be","do"]],[["do","be","do"], ["do","be","do"], ["do","be","do"]],[["do","be","do"], ["do","be","do"], ["do","be","do"]]); 
     });
   });
 
@@ -101,12 +108,23 @@ const {
  * @param {String} day
  * @returns {Boolean}
  */
+let rota = [
+    { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+    { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "Pedro", rota: ["Saturday", "Wednesday", "Thursday", "Sunday"] },
+    { name: "Pedro", rota: ["Friday", "Monday", "Wednesday", "Tuesday"] },
+    { name: "Pedro", rota: ["Thursday", "Saturday", "Friday", "Sunday"] },
+   ]
+
   describe("areWeCovered", () => {
     test("reverses the digits of a number", () => {
-      expect(areWeCovered(5)).toBe(5);
-      expect(areWeCovered(104)).toBe(401);
-      expect(areWeCovered(12345)).toBe(54321);
-      expect(areWeCovered(100)).toBe(1); 
+      expect(areWeCovered(rota,"Monday")).toBe(false);
+      expect(areWeCovered(rota,"Tuesday")).toBe(true);
+      expect(areWeCovered(rota,"Wednesday")).toBe(true);
+      expect(areWeCovered(rota,"Thursday")).toBe(false);
+      expect(areWeCovered(rota,"Friday")).toBe(true);
+      expect(areWeCovered(rota,"Saturday")).toBe(true);
+      expect(areWeCovered(rota,"Sunday")).toBe(true);
     });
   });
 
