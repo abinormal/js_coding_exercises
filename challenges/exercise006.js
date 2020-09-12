@@ -22,12 +22,33 @@ const sumMultiples = arr => {
 };
 
 /**
- * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
+ * This function will receive a string of characters and should return true/false 
+ * depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
  * @param {String} str
  * @returns {Boolean}
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+
+  let DNAString = str.split("");
+
+  //for each item in DNAstring
+for (let i = 0 ; i<DNAString.length ; i++) {
+  if (DNAString[i] === "C"||"T"||"G"||"A"){
+    return true;
+  }else{
+    return false;  
+  }  
+}
+/*
+  DNAString.forEach(letter => {
+    if (letter == "C"||"T"||"G"||"A"){
+      console.log("true- letter is: " + letter);
+    }else{
+      console.log("ArGh! - letter is " + letter);  
+    }  
+    } );
+    */
 };
 
 /**

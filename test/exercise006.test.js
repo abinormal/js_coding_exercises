@@ -31,9 +31,14 @@ const {
  */
   describe("isValidDNA", () => {
     test("Checks the validity of a DNA string", () => {
+      expect(isValidDNA("A")).toBe(true);
+      expect(isValidDNA("T")).toBe(true);
+      expect(isValidDNA("G")).toBe(true);
+      expect(isValidDNA("C")).toBe(true);
+      expect(isValidDNA("w")).toBe(false);
       expect(isValidDNA("CGTCAACGTAAATGCGTA")).toBe(true);
       expect(isValidDNA("CCTTGACTAGTHGCTAGC")).toBe(false);
-      expect(isValidDNA("agctcgatcg")).toBe(true); //unless we do case about case
+      expect(isValidDNA("agctcgatcg")).toBe(true); //unless we do care about case
       expect(isValidDNA("Hello")).toBe(false);
     });
   });
