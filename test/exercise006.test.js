@@ -14,7 +14,7 @@ const {
  * @returns {Number}
  */
   describe("sumMultiples", () => {
-    test("reverses the digits of a number", () => {
+    test("Returns the sum of any numbers which are a multiple of 3 or 5", () => {
       expect(sumMultiples([3, 5, 6])).toBe(14);
       expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
       expect(sumMultiples([])).toBe(0); //Given an empty array
@@ -30,7 +30,7 @@ const {
  * @returns {Boolean}
  */
   describe("isValidDNA", () => {
-    test("reverses the digits of a number", () => {
+    test("Checks the validity of a DNA string", () => {
       expect(isValidDNA("CGTCAACGTAAATGCGTA")).toBe(true);
       expect(isValidDNA("CCTTGACTAGTHGCTAGC")).toBe(false);
       expect(isValidDNA("agctcgatcg")).toBe(true); //unless we do case about case
@@ -47,7 +47,7 @@ const {
  * @returns {String}
  */
   describe("getComplementaryDNA", () => {
-    test("reverses the digits of a number", () => {
+    test("Return complimentary Base pairs of a string of DNA", () => {
       expect(getComplementaryDNA("TCGA")).toBe("AGCT");
       expect(getComplementaryDNA("TTCCGGAA")).toBe("AAGGCCTT");
       expect(getComplementaryDNA("TGACTCGATC")).toBe("ACTGAGCTAG"); //fill this in
@@ -63,7 +63,7 @@ const {
  * @returns {Boolean}
  */
   describe("isItPrime", () => {
-    test("reverses the digits of a number", () => {
+    test("Is it a prime number?", () => {
       expect(isItPrime(7)).toBe(true);
       expect(isItPrime(3)).toBe(true);
       expect(isItPrime(19)).toBe(true);
@@ -88,7 +88,7 @@ const {
  * @returns {Array}
  */
   describe("createMatrix", () => {
-    test("reverses the digits of a number", () => {
+    test("Create a matrix n by n containing the given filler.", () => {
       expect(createMatrix(3, "foo")).toBe([["foo", "foo", "foo"],["foo", "foo", "foo"],["foo", "foo", "foo"]]);
       expect(createMatrix(2, 34)).toBe([[34,34][34,34]]);
       expect(createMatrix(6,"Eureka!")).toBe([["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"]]);
@@ -103,7 +103,9 @@ const {
  *  { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
  *  ...etc
  * ]
- * and a day of the week. For the café to run successfully, at least 3 staff members are required per day. The function should return true/false depending on whether there are enough staff scheduled for the given day.
+ * and a day of the week. For the café to run successfully, at least 3 staff 
+ * members are required per day. The function should return true/false depending
+ *  on whether there are enough staff scheduled for the given day.
  * @param {Array} staff
  * @param {String} day
  * @returns {Boolean}
@@ -117,7 +119,7 @@ let rota = [
    ]
 
   describe("areWeCovered", () => {
-    test("reverses the digits of a number", () => {
+    test("Given a rota the function checks staff numbers for a given day.", () => {
       expect(areWeCovered(rota,"Monday")).toBe(false);
       expect(areWeCovered(rota,"Tuesday")).toBe(true);
       expect(areWeCovered(rota,"Wednesday")).toBe(true);
