@@ -172,9 +172,9 @@ const findWinner = board => {
     }
   }
   //are they all x's or 0's?
-  if (horizontal0 =3)
+  if (horizontal0 == 3)
     return "0";
-    
+
   //For each vertical line in array
   //are they all x's or 0's?
 
