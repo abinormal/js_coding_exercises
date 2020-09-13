@@ -33,13 +33,14 @@ const isValidDNA = str => {
   let DNAString = str.split("");
 
   //for each item in DNAstring
-for (let i = 0 ; i<DNAString.length ; i++) {
-  if (DNAString[i] === "C"||"T"||"G"||"A"){
-    return true;
-  }else{
-    return false;  
-  }  
-}
+  for (let i = 0 ; i<DNAString.length ; i++) {
+    if ((DNAString[i] === "C")||(DNAString[i] === "G")
+        ||(DNAString[i] === "T")||(DNAString[i] === "A")){
+      console.log("true- letter is: " + DNAString[i]);
+    }else{
+     console.log("ArGh! - letter is " + DNAString[i]);   
+    }  
+  }
 /*
   DNAString.forEach(letter => {
     if (letter == "C"||"T"||"G"||"A"){
