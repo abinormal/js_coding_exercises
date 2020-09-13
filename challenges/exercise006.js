@@ -130,7 +130,7 @@ const createMatrix = (n, fill) => {
           array[i][j] = fill; 
       } 
   } 
-  
+
   return array;
 
 };
@@ -150,6 +150,18 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+
+  let count = 0;
+  
+  // loop through rota and count day
+  for (let i=0 ; i < staff.length; i++) {
+    if (staff[i].rota.find(element => element === day))
+        count++;
+  }
+  
+  //console.log("Count is: "+ count);
+  return (count >= 3);
+
 };
 
 module.exports = {
