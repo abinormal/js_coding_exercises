@@ -97,10 +97,8 @@ const {
  */
   describe("hexToRGB", () => {
     test("Given a Hex number function returns RGB", () => {
-      expect(hexToRGB([3, 5, 6])).toBe(14);
-      expect(hexToRGB([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
-      expect(hexToRGB([])).toBe(0); //Given an empty array
-      //Could give array of strings to really mess it up.
+      expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+      expect(hexToRGB("#00CCFF")).toBe("rgb(0,204,255)");
     });
   });
 
