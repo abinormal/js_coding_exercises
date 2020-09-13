@@ -29,45 +29,72 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-
+  let isFalse = true;
   let DNAString = str.split("");
 
   //for each item in DNAstring
-  for (let i = 0 ; i<DNAString.length ; i++) {
-    if ((DNAString[i] === "C")||(DNAString[i] === "G")
-        ||(DNAString[i] === "T")||(DNAString[i] === "A")){
-      console.log("true- letter is: " + DNAString[i]);
-    }else{
-     console.log("ArGh! - letter is " + DNAString[i]);   
-    }  
-  }
-/*
   DNAString.forEach(letter => {
-    if (letter == "C"||"T"||"G"||"A"){
-      console.log("true- letter is: " + letter);
-    }else{
-      console.log("ArGh! - letter is " + letter);  
-    }  
-    } );
-    */
+    if (! ((letter === "A")||(letter === "G")
+        || (letter === "T")||(letter === "C") )){
+      console.log("False Letter: "+letter);    
+      isFalse = false;  
+    } 
+  });
+  return isFalse;
 };
 
 /**
- * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
+ * This function will receive a valid DNA string (see above) and should return 
+ * a string of the complementary base pairs. In DNA, T always pairs with A, and 
+ * C always pairs with G. So a string of "ACTG" would have a complementary DNA 
+ * string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+
+  let DNAString = str.split("");
+  let newString = "";
+
+  DNAString.forEach(letter => {
+    if (letter === "A") {
+      newString = newString + "T";
+    }
+    if (letter === "T") {
+      newString = newString + "A";
+    }
+    if (letter === "G") {
+      newString = newString + "C";
+    }
+    if (letter === "C") {
+      newString = newString + "G";
+    }
+
+  });
+
+  return newString;
 };
 
 /**
- * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
+ * This function should receive a number and return true/false depending on 
+ * whether it is a prime number or not. A prime number is a number that can 
+ * only be divided evenly by 1 and itself (for example, 7)
  * @param {Number} n
  * @returns {Boolean}
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+
+  let d = n-1;
+  while (d > 1){
+    if ((n % d) == 0){ 
+      return false;
+    }  
+    d--;
+  }
+  return true;  
+
 };
 
 /**

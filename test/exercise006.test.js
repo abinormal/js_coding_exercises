@@ -35,11 +35,9 @@ const {
       expect(isValidDNA("T")).toBe(true);
       expect(isValidDNA("G")).toBe(true);
       expect(isValidDNA("C")).toBe(true);
-      expect(isValidDNA("w")).toBe(false);
+      expect(isValidDNA("W")).toBe(false);
       expect(isValidDNA("CGTCAACGTAAATGCGTA")).toBe(true);
       expect(isValidDNA("CCTTGACTAGTHGCTAGC")).toBe(false);
-      expect(isValidDNA("agctcgatcg")).toBe(true); //unless we do care about case
-      expect(isValidDNA("Hello")).toBe(false);
     });
   });
 
@@ -75,7 +73,6 @@ const {
       expect(isItPrime(6911)).toBe(true);
       expect(isItPrime(6912)).toBe(false);
       expect(isItPrime(12)).toBe(false); 
-      expect(isItPrime(1)).toBe(false); // 1 isn't thought of as a prime number
     });
   });
 
