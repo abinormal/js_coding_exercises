@@ -12,9 +12,9 @@ const {
  */
   describe("sumDigits", () => {
     test("Returns the sum all digits in a number", () => {
-      expect(sumMultiples(123)).toBe(6);
-      expect(sumMultiples(345)).toBe(12);
-      expect(sumMultiples(12345)).toBe(15); //Given an empty array
+      expect(sumDigits(123)).toBe(6);
+      expect(sumDigits(345)).toBe(12);
+      expect(sumDigits(12345)).toBe(15); //Given an empty array
       //Could give array of strings to really mess it up.
     });
   });
@@ -28,55 +28,58 @@ const {
  * Step is an optional parameter. If it is not provided, assume the step is 1.
  * @param {Number} start
  * @param {Number} end
- * @param {Number} step
+ * @param {Number} step - Optional
  */
   describe("createRange", () => {
     test("Returns a range of numbers between two given numbers", () => {
-      expect(sumMultiples([3, 5, 6])).toBe(14);
-      expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
-      expect(sumMultiples([])).toBe(0); //Given an empty array
-      //Could give array of strings to really mess it up.
+      expect(createRange(3, 5)).toMatchObject([3, 4, 5]);
+      expect(createRange(1, 7, 2)).toMatchObject([1, 3, 5, 7]);
+      expect(createRange(4, 16, 4)).toMatchObject([4 ,8, 12, 16]); 
     });
   });
 
-/**
- * This function takes an array of user objects and their usage in minutes of various applications. 
- * The format of the data should be as follows:
- * [
- *  {
- *    username: "beth_1234",
- *    name: "Beth Smith",
- *    screenTime: [
- *                 { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
- *                 { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
- *                 { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
- *                 { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
- *                ]
- *   },
- *   {
- *    username: "sam_j_1989",
- *    name: "Sam Jones",
- *    screenTime: [
- *                 { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
- *                 { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
- *                 { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
- *                ]
- *   },
- * ]
- *
- * The function should return an array of usernames of users who have used more than 100 minutes of screentime 
- * for a given date.
- * The date will be provided in the format "2019-05-04" (YYYY-MM-DD)
- * For example, if passed the above users and the date "2019-05-04" the function should return ["beth_1234"] as 
- * she used over 100 minutes of screentime on that date.
+/*
  * @param {Array} users
  */
   describe("getScreentimeAlertList", () => {
     test("Returns users who have screentime > 100 mins for a given date", () => {
-      expect(sumMultiples([3, 5, 6])).toBe(14);
-      expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
-      expect(sumMultiples([])).toBe(0); //Given an empty array
-      //Could give array of strings to really mess it up.
+      const users = [
+        {
+          username: "beth_1234",
+          name: "Beth Smith",
+          screenTime: [
+             { date: "2019-06-12", usage: { twitter: 34, instagram: 22, facebook: 40} },
+             { date: "2019-06-13", usage: { twitter: 56, instagram: 40, facebook: 31} },
+             { date: "2019-06-14", usage: { twitter: 12, instagram: 15, facebook: 19} },
+             { date: "2019-06-15", usage: { twitter: 10, instagram: 56, facebook: 61} },
+             ]
+         },
+         {
+          username: "sam_j_1989",
+          name: "Sam Jones",
+          screenTime: [
+             { date: "2019-06-12", usage: { mapMyRun: 12, whatsApp: 45, facebook: 0, safari: 10} },
+             { date: "2019-06-13", usage: { mapMyRun: 45, whatsApp: 10, facebook: 0, safari: 16} },
+             { date: "2019-06-14", usage: { mapMyRun: 56, whatsApp: 34, facebook: 0, safari: 31} },
+             { date: "2019-06-15", usage: { mapMyRun: 34, whatsApp: 36, facebook: 0, safari: 31} },
+             ]
+         },
+         {
+          username: "asid_2020",
+          name: "A Siddy",
+          screenTime: [
+             { date: "2019-06-12", usage: { polytopia: 24, whatsApp: 45, facebook: 0, safari: 37} },
+             { date: "2019-06-13", usage: { polytopia: 56, whatsApp: 23, facebook: 0, safari: 16} },
+             { date: "2019-06-14", usage: { polytopia: 45, whatsApp: 24, facebook: 0, safari: 31} },
+             { date: "2019-06-15", usage: { polytopia: 34, whatsApp: 13, facebook: 0, safari: 23} },
+             ]
+         },
+       ];
+
+      expect(getScreentimeAlertList(users, "2019-06-12")).toMatchObject(["asid_2020"]);
+      expect(getScreentimeAlertList(users, "2019-06-13")).toMatchObject(["beth_1234"]);
+      expect(getScreentimeAlertList(users, "2019-06-14")).toMatchObject(["sam_j_1989","asid_2020"]);
+      expect(getScreentimeAlertList(users, "2019-06-15")).toMatchObject(["beth_1234","sam_j_1989"]);
     });
   });
 
@@ -94,9 +97,9 @@ const {
  */
   describe("hexToRGB", () => {
     test("Given a Hex number function returns RGB", () => {
-      expect(sumMultiples([3, 5, 6])).toBe(14);
-      expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
-      expect(sumMultiples([])).toBe(0); //Given an empty array
+      expect(hexToRGB([3, 5, 6])).toBe(14);
+      expect(hexToRGB([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
+      expect(hexToRGB([])).toBe(0); //Given an empty array
       //Could give array of strings to really mess it up.
     });
   });

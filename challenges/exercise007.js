@@ -15,16 +15,38 @@ const sumDigits = n => {
 };
 
 /**
- * This function creates a range of numbers as an array. It received a start, an end and a step. Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 the resulting range would be: [3, 5, 7, 9, 11]
+ * This function creates a range of numbers as an array. It received a start, an end and a step. 
+ * Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 
+ * the resulting range would be: [3, 5, 7, 9, 11]
  * Both the start and the end numbers are inclusive.
  * Step is an optional parameter. If it is not provided, assume the step is 1.
  * @param {Number} start
  * @param {Number} end
- * @param {Number} step
+ * @param {Number} step - optional
  */
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+
+  //Set step to 1 if not defined
+  if(step === undefined) { step = 1;}
+
+  let array = [];
+
+  //push start into the array
+  array.push(start);
+  let temp = start;
+
+  do {
+      // add step to start -> temp
+    temp += step;
+    // push onto array
+    array.push(temp);
+    // check if it === end
+    // if end exit.
+  } while (temp !=end)
+
+  return array;
 };
 
 /**
@@ -59,6 +81,38 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  let array = [];
+  
+  //for each user
+  for (let i = 0; i<users.length; i++){
+  // Me getting the info out:
+  //  console.log(users[i].screenTime[0]);
+  //  console.log(users[i].screenTime[0].date);
+  //  console.log(users[i].screenTime[0].usage); 
+  
+    //loop through screentime to find the given date
+    for (let f=0 ; f<users[i].screenTime.length ; f++){
+      //add screentime for given date
+      if (users[i].screenTime[f].date == date){
+        let total = 0;
+        for(var time in users[i].screenTime[f].usage){
+          //console.log(time); // alerts key
+          //console.log(users[i].screenTime[0].usage[time]); //alerts key's value
+          total += users[i].screenTime[f].usage[time];
+        }     
+        
+        //console.log("Total: "+ total);
+        //is > 100? add to list
+        if (total >= 100){
+          array.push(users[i].username);
+        }
+      }
+    }
+  }
+  //console.log("user list: "+ array);
+  return array;
+
 };
 
 /**
