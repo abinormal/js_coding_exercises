@@ -91,10 +91,15 @@ const {
  */
   describe("createMatrix", () => {
     test("Create a matrix n by n containing the given filler.", () => {
-      expect(createMatrix(3, "foo")).toBe([["foo", "foo", "foo"],["foo", "foo", "foo"],["foo", "foo", "foo"]]);
-      expect(createMatrix(2, 34)).toBe([[34,34][34,34]]);
-      expect(createMatrix(6,"Eureka!")).toBe([["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"]]);
-      expect(createMatrix(3,["do","be","do"])).toBe([["do","be","do"], ["do","be","do"], ["do","be","do"]],[["do","be","do"], ["do","be","do"], ["do","be","do"]],[["do","be","do"], ["do","be","do"], ["do","be","do"]]); 
+      expect(createMatrix(1,"blah")).toMatchObject([ [ 'blah' ] ]);
+      expect(createMatrix(3, "foo")).toMatchObject([["foo", "foo", "foo"],["foo", "foo", "foo"],["foo", "foo", "foo"]]);
+      expect(createMatrix(2, 34)).toMatchObject([ [ 34, 34 ], [ 34, 34 ] ]);
+      expect(createMatrix(6,"Eureka!")).toMatchObject([["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"],["Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!", "Eureka!"]]);
+      expect(createMatrix(3,["do","be","do"])).toMatchObject([
+        [ [ 'do', 'be', 'do' ], [ 'do', 'be', 'do' ], [ 'do', 'be', 'do' ] ],
+        [ [ 'do', 'be', 'do' ], [ 'do', 'be', 'do' ], [ 'do', 'be', 'do' ] ],
+        [ [ 'do', 'be', 'do' ], [ 'do', 'be', 'do' ], [ 'do', 'be', 'do' ] ]
+      ]); 
     });
   });
 
