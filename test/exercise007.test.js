@@ -117,9 +117,24 @@ const {
  */
   describe("findWinner", () => {
     test("Given an array determines if player x or 0 has won or if no one has won.", () => {
-      expect(sumMultiples([3, 5, 6])).toBe(14);
-      expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
-      expect(sumMultiples([])).toBe(0); //Given an empty array
-      //Could give array of strings to really mess it up.
+      game1 = [
+          ["X", "0", null],
+          ["X", null, "0"],
+          ["X", null, "0"]
+      ]; 
+      game2 = [
+        ["X", "0", null],
+        [null, null, "0"],
+        ["X", null, "0"]
+      ];
+      game3 = [
+        ["0", "0", "0"],
+        [null, null, "x"],
+        ["X", "x", "0"]
+      ];
+
+      expect(findWinner(game1)).toBe("x");
+      expect(findWinner(game2)).toBe(null);
+      expect(findWinner(game3)).toBe("0"); 
     });
   });

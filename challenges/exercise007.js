@@ -151,6 +151,34 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  let retVal = null;
+  let horizontalX = 0; 
+  let horizontal0 = 0;
+  let verticalX = 0;
+  let vertical0 = 0;
+
+  //For each horizontal line in array
+  for (let i = 0; i<3 ; i++) {
+    for (let j = 0; j<3 ; j++){
+      //For each horizontal line in array
+      if (board[i][j] == "x") {
+        horizontalX++;
+      }
+      if (board[i][j] == "y") {
+        horizontal0++;
+      }
+
+    }
+  }
+  //are they all x's or 0's?
+  if (horizontal0 =3)
+    return "0";
+    
+  //For each vertical line in array
+  //are they all x's or 0's?
+
+  return retVal;
 };
 
 module.exports = {
