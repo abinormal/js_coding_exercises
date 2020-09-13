@@ -12,9 +12,9 @@ const {
  */
   describe("sumDigits", () => {
     test("Returns the sum all digits in a number", () => {
-      expect(sumMultiples([3, 5, 6])).toBe(14);
-      expect(sumMultiples([1, 2, 3, 6, 3, 1, 9, 10, 12,])).toBe(43);
-      expect(sumMultiples([])).toBe(0); //Given an empty array
+      expect(sumMultiples(123)).toBe(6);
+      expect(sumMultiples(345)).toBe(12);
+      expect(sumMultiples(12345)).toBe(15); //Given an empty array
       //Could give array of strings to really mess it up.
     });
   });
