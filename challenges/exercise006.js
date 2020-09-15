@@ -36,7 +36,7 @@ const isValidDNA = str => {
   DNAString.forEach(letter => {
     if (! ((letter === "A")||(letter === "G")
         || (letter === "T")||(letter === "C") )){
-      console.log("False Letter: "+letter);    
+      //console.log("False Letter: "+letter);    
       isFalse = false;  
     } 
   });

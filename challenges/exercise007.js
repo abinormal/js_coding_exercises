@@ -158,28 +158,28 @@ const findWinner = board => {
   let array2 = [];
   let array3 = [];
 
-  console.log("####### NEW GAME! #######")
+  //console.log("####### NEW GAME! #######")
 
   //For each horizontal line in array
   for (let i = 0; i<3 ; i++) {
 
-    console.log("#### EACH ROW ####")
+    //console.log("#### EACH ROW ####")
     let horizontalX = 0; 
     let horizontal0 = 0;
     for (let j = 0; j<3 ; j++){
       //For each horizontal line in array
       
-      console.log("Iterating through: "+board[i][j]);
+      //console.log("Iterating through: "+board[i][j]);
       if (board[i][j] == "X") {
         horizontalX++;
-        console.log("FOund an X!");
+        //console.log("FOund an X!");
       }
       if (board[i][j] == "0") {
         horizontal0++;
-        console.log("FOund a zero");
+        //console.log("FOund a zero");
       }
-      console.log("Horizontal 0: "+horizontal0);
-      console.log("Horizontal x: "+horizontalX);
+      // console.log("Horizontal 0: "+horizontal0);
+      // console.log("Horizontal x: "+horizontalX);
       if (horizontalX == 3)
         return "X";
       if (horizontal0 == 3)
@@ -196,29 +196,24 @@ const findWinner = board => {
 
     }
   }
+  
   if ((array1[0] == "X") && (array1[1] =="X") && (array1[2]=="X") ){
-    console.log("WINNER IS X!");
     return "X";
   }
   if ((array2[0] == "X") && (array2[1] =="X") && (array2[2]=="X") ){
-      console.log("WINNER IS X!");
       return "X";
   }
   if ((array3[0] == "X") && (array3[1] =="X") && (array3[2]=="X") ){
-      console.log("WINNER IS X!");
       return "X";
   }
 
   if ((array1[0] == "0") && (array1[1] =="0") && (array1[2]=="0") ){
-      console.log("WINNER IS 0!");
       return "0";
   }
   if ((array2[0] == "0") && (array2[1] =="0") && (array2[2]=="0") ){
-      console.log("WINNER IS 0!");
       return "0";
   }
   if ((array3[0] == "0") && (array3[1] =="0") && (array3[2]=="0") ){
-      console.log("WINNER IS 0!");
       return "0";
   }
 
