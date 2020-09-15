@@ -88,12 +88,11 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   
-  //console.log("###Start to Search for "+ searchTerm);
-
   for (let key in haystack) {
       if (Object.prototype.hasOwnProperty.call(haystack, key)) { 
           let val = haystack[key];
           //check for string before .toUpperCase()
+          
           if (typeof val === 'string' || val instanceof String) {            
             let temp = val.toUpperCase();
             val = temp;
@@ -102,14 +101,17 @@ const findNeedle = (haystack, searchTerm) => {
             let temp1 = searchTerm.toUpperCase();
             searchTerm = temp1;
           }  
-          //console.log("Val: "+ val);
           //Compare string
           //TODO: Change this to search val for searchTerm
-          if (val == searchTerm)  {
-            //console.log("TRUE!!");
-            return true;
-          } else {
-            //console.log("FALSE!");
+          console.log("Looking for "+searchTerm+" in "+val);
+          if (typeof val === 'string' || val instanceof String) {
+            let found = val.search(searchTerm);
+            if (found >= 0)  {
+              console.log("TRUE!!");
+              return true;
+            } else {
+              console.log("FALSE!");
+            }
           }
       }
   }
