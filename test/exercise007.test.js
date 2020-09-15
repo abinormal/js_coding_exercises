@@ -117,24 +117,31 @@ const {
  */
   describe("findWinner", () => {
     test("Given an array determines if player x or 0 has won or if no one has won.", () => {
-      game1 = [
-          ["X", "0", null],
-          ["X", null, "0"],
-          ["X", null, "0"]
-      ]; 
-      game2 = [
+      let game1 = [
+        ["0", "0", "0"],
+        [null, null, "X"],
+        ["X", "X", "0"]
+      ];
+      let game4 = [
+        ["0", "0", null],
+        [null, null, "X"],
+        ["X", "X", "X"]
+      ];
+      let game2 = [
         ["X", "0", null],
         [null, null, "0"],
         ["X", null, "0"]
       ];
-      game3 = [
-        ["0", "0", "0"],
-        [null, null, "x"],
-        ["X", "x", "0"]
-      ];
+      let game3 = [
+        ["X", "0", null],
+        ["X", null, "0"],
+        ["X", null, "0"]
+      ]; 
 
-      expect(findWinner(game1)).toBe("x");
+      expect(findWinner(game1)).toBe("0");
+      expect(findWinner(game4)).toBe("X");
       expect(findWinner(game2)).toBe(null);
-      expect(findWinner(game3)).toBe("0"); 
+      expect(findWinner(game3)).toBe("X");
+
     });
   });
