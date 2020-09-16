@@ -77,13 +77,13 @@ function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
 
   let aSquares = [];
-  let index =0;
 
   for(let i = 0; i<nums.length ; i++){
-    //console.log("count: "+ i);
-    aSquares[index] = Math.sqrt(nums);
-    index++;
-  }
+    // Square the given number
+    let temp = Math.sqrt(nums[i]);
+    // Truncate to two decimal places
+    aSquares.push(parseFloat(temp.toFixed(2)));
+  } 
   return aSquares;
 }
 
@@ -108,20 +108,14 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  let aLong =[];
+  let longSides =[];
   
   for (let i = 0; i<triangles.length ; i++){
-    let largest = 0;
-    for (let j =0; j<triangles[i].length ; j++){
-      if (triangles[j]>largest)
-        largest = triangles[j];
-    }
-    //OMG I only just saw that- I knew there must be a better way.
-    //I have so much to learn!! 
-    //TODO - edit out the embarrassment later
-    aLong.push(largest);
+    //console.log("Numbers: "+ triangles[i] + " Largest: "+ Math.max(...triangles[i]));
+    // Math max gives the largest number in an array 
+    longSides.push(Math.max(...triangles[i]));
   }
-  return aLong;
+  return longSides;
 }
 
 module.exports = {
