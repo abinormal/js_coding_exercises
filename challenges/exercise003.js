@@ -56,38 +56,19 @@ function duplicateNumbers(arr1, arr2) {
   let aDuplicates = [];
   let iDupCount = 0;
 
-  //well I have done it the hard way
-
   for (let i = 0 ; i <arr1.length ; i++){
     for (let j = 0 ; j <arr2.length ; j++){
       // check for duplicate
       if (arr1[i]==arr2[j]){
-        //console.log("a Match!");
-        // Check if it's the first entry in the array.
-        if (iDupCount == 0){
-          aDuplicates[iDupCount] = arr1[i];
-          iDupCount++;
-        } else {
-          // Check for duplicates
-
-          for (let k = 0; k < aDuplicates.length ; k++){
-            //console.log("checking for duplicates in aDupe");
-
-            //Something is wrong here - all duplicates are added.
-            //TODO
-            if (aDuplicates[k]==arr1[i]) {
-              // Do nothing
-            } else {
-              aDuplicates[iDupCount] = arr1[i];
-              iDupCount++;
-            }
-          }
-        }
+        // Found - Add to array
+        aDuplicates[iDupCount] = arr1[i];
+        iDupCount++;
       }  
     }
   }
-  //console.log(aDuplicates);
-  return aDuplicates.sort();
+  // Remove duplicates and sort
+  let unique = [...new Set(aDuplicates)]; 
+  return unique.sort();
 }
 
 module.exports = {

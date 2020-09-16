@@ -103,14 +103,14 @@ const findNeedle = (haystack, searchTerm) => {
           }  
           //Compare string
           //TODO: Change this to search val for searchTerm
-          console.log("Looking for "+searchTerm+" in "+val);
+          //console.log("Looking for "+searchTerm+" in "+val);
           if (typeof val === 'string' || val instanceof String) {
             let found = val.search(searchTerm);
             if (found >= 0)  {
-              console.log("TRUE!!");
+              //console.log("TRUE!!");
               return true;
             } else {
-              console.log("FALSE!");
+              //console.log("FALSE!");
             }
           }
       }
@@ -125,7 +125,7 @@ const getWordFrequencies = str => {
   let obj = {};
 
   //splice string into array 
-  let splitString = str.split(" ");
+  let splitString = str.toLowerCase().replace(',','').split(" ");
   //count through each
   for (let i=0 ; i<splitString.length ; i++){
     //note words and frequencies
