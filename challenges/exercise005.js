@@ -125,21 +125,17 @@ const getWordFrequencies = str => {
   let obj = {};
 
   //splice string into array 
-  let splitString = str.toLowerCase().replace(',','').split(" ");
-  //count through each
+  let splitString = str.toLowerCase().replace('!','').replace('?','').replace(',','').split(" ");
+  //console.log("SplitString: " + splitString);
+
+  //count through each 
   for (let i=0 ; i<splitString.length ; i++){
-    //note words and frequencies
-    if (splitString[0]){
-      //obj['property_name'] = 'some_value';
-      obj[splitString[0]] = 1;
-    } else {
-      //check obj for property names matching the next item in splitString
-      //if found add 1 to existing
-      //otherwise 
-      //create a new poperty in obj.
-    }
-    
+    if (obj.hasOwnProperty(splitString[i]))
+      obj[splitString[i]] += 1;
+    else
+      obj[splitString[i]] = 1;
   }
+  //console.log("Object: " + obj);
   return obj;
 };
 
