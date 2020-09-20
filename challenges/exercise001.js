@@ -13,8 +13,7 @@ function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
   
-  let vat = (originalPrice/100)*vatRate;
-  let total = originalPrice + vat;
+  let total = originalPrice + ((originalPrice/100)*vatRate);
 
   // push string back into a number as test complains about quotation marks
   return parseFloat(total.toFixed(2));  
@@ -23,18 +22,16 @@ function addVAT(originalPrice, vatRate) {
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  let percentage = (originalPrice/100)*reduction;
-  let newPrice = originalPrice - percentage;
+ 
+  let newPrice = originalPrice - ((originalPrice/100)*reduction);
   return parseFloat(newPrice.toFixed(2));
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  //Get string length
-  let len = str.length;
 
-  //Find the middle value
-  let middle = len/2;
+  //Get string length and Find the middle value
+  let middle = (str.length)/2;
 
   //find even and odd
   if (Number.isInteger(middle) ) {
@@ -54,26 +51,21 @@ function reverseWord(word) {
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   
-  //For each word in words
-  for (let i = 0 ; i < words.length ; i++) {
-    //Pull out the string
-    let string = words[i];
-    //Edit and save to array
-    words[i] = string.split("").reverse().join("");
-  }
-  return words;
+  let newWords = [];
+  // forEach word in words, reverse and add to new array.
+  words.forEach((word)=>
+  {
+    newWords.push(word.split("").reverse().join(""));
+  })
+  return newWords;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   let linuxUsers = 0;
-  //Get each one check for type = "linux"
-  for (let i = 0 ; i<users.length; i++) {
-   //console.log("Get type: ", users[i].type);
-    if (users[i].type == "Linux") {
-      linuxUsers++;
-    }  
-  }
+  //Get each one, check for type = "linux"
+  users.forEach((user)=>{user.type == "Linux" ? linuxUsers++ : null})
+
   return linuxUsers;
 }
 
@@ -82,9 +74,8 @@ function getMeanScore(scores) {
   let total = 0; 
 
   //Add all the scores.
-  for (let i = 0 ; i<scores.length; i++) {
-    total+=scores[i];
-  }
+  scores.forEach((score)=>{total+=score})
+ 
   let average = total / scores.length;
 
   //truncate the trailing values

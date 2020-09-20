@@ -1,11 +1,11 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
   // parse array, get square of each number, save to same array location
-  for (let i = 0; i<nums.length ; i++){
-    let square = nums[i]*nums[i];
-    nums[i] = square;
-  }
-  return nums;
+
+  let newNums = [];
+  nums.forEach(num=>newNums.push(num*num))
+
+  return newNums;
 }
 
 function camelCaseWords(words) {

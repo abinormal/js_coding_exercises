@@ -17,12 +17,11 @@ function getBusNumbers(people) {
 
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
-  // const arr = ["dog", "badger", "dog", "dog", "chicken"];
+  
   let iSheep = 0;
-  for (let i = 0; i<arr.length ; i++){
-    if (arr[i] == "sheep")
-      iSheep++;
-  }
+  // foreach animal in animals if == sheep, then ++
+  arr.forEach((animal)=>{animal == "sheep" ? iSheep++ : null })
+  
   return iSheep;
 }
 
