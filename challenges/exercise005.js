@@ -59,12 +59,10 @@ const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
   
   let total = 0;
-
-  for (let i=0; i<arrs.length;i++){
-    for (let j=0; j<arrs[i].length;j++){
-      total += arrs[i][j];
-    }
-  }
+  // Iterate over array, use reduce on each array to add contents
+  arrs.forEach(arr => {
+    total += arr.reduce((a,b) => a+=b) 
+  })
   return total;
 };
 
