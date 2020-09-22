@@ -28,14 +28,8 @@ const count1sand0s = str => {
     0: 0,
     1: 0
   };
-
-  for (let i=0; i<str.length ; i++){
-    if (str.substring(i,i+1) == 1 ){
-      count[1] += 1;
-    } else {
-      count[0] += 1;
-    }
-  }
+  
+  str.split("").forEach(num=>{num == 1 ? count[1] += 1 : count[0] += 1 });
   return count;
 };
 
@@ -44,7 +38,7 @@ const reverseNumber = n => {
   
   let z = n;
   let reverse = 0;
-
+  
   while(z > 0)
   {
     let digit = z % 10;
@@ -52,14 +46,13 @@ const reverseNumber = n => {
     z = parseInt(z / 10);
   }
   return reverse;
-
 };
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
   
   let total = 0;
-  // Iterate over array, use reduce on each array to add contents
+  // Iterate over array, use .reduce on each array to add contents
   arrs.forEach(arr => {
     total += arr.reduce((a,b) => a+=b) 
   })
@@ -86,35 +79,19 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   
-  for (let key in haystack) {
-      if (Object.prototype.hasOwnProperty.call(haystack, key)) { 
-          let val = haystack[key];
-          //check for string before .toUpperCase()
-          
-          if (typeof val === 'string' || val instanceof String) {            
-            let temp = val.toUpperCase();
-            val = temp;
-          }  
-          if (typeof searchTerm === 'string' || searchTerm instanceof String) {  
-            let temp1 = searchTerm.toUpperCase();
-            searchTerm = temp1;
-          }  
-          //Compare string
-          //TODO: Change this to search val for searchTerm
-          //console.log("Looking for "+searchTerm+" in "+val);
-          if (typeof val === 'string' || val instanceof String) {
-            let found = val.search(searchTerm);
-            if (found >= 0)  {
-              //console.log("TRUE!!");
-              return true;
-            } else {
-              //console.log("FALSE!");
-            }
-          }
-      }
-  }
+  let search = searchTerm.toLowerCase();
+  let isFound = false;
+  
+  Object.values(haystack).forEach((value)=>{
+    
+    value = value.toString().toLowerCase();
+    // Find string in string and check return value
+    // returns the position the string was found or -1
+    if (value.search(search) >= 0)  
+      isFound = true;
+  });
 
-  return false;
+  return isFound;
 };
 
 const getWordFrequencies = str => {
@@ -122,18 +99,12 @@ const getWordFrequencies = str => {
   
   let obj = {};
 
-  //splice string into array 
+  //splice string into array removing junk
   let splitString = str.toLowerCase().replace('!','').replace('?','').replace(',','').split(" ");
-  //console.log("SplitString: " + splitString);
 
-  //count through each 
-  for (let i=0 ; i<splitString.length ; i++){
-    if (obj.hasOwnProperty(splitString[i]))
-      obj[splitString[i]] += 1;
-    else
-      obj[splitString[i]] = 1;
-  }
-  //console.log("Object: " + obj);
+  //count through each, checking for a match
+  splitString.forEach((word)=>{(word in obj) ? obj[word] += 1 : obj[word] = 1; });
+
   return obj;
 };
 
