@@ -6,11 +6,12 @@ const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
 
   let sum = 0;
+    
   while(n > 0) {
     sum += n % 10;
     n = Math.floor(n / 10);
   }
-  //console.log("Sum: "+sum);
+  //console.log("Sum: "+sum);*/
   return sum;
 };
 
@@ -24,12 +25,9 @@ const sumDigits = n => {
  * @param {Number} end
  * @param {Number} step - optional
  */
-const createRange = (start, end, step) => {
+const createRange = (start, end, step = 1) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-
-  //Set step to 1 if not defined
-  if(step === undefined) { step = 1;}
 
   let array = [];
 
@@ -85,34 +83,27 @@ const getScreentimeAlertList = (users, date) => {
   let array = [];
   
   //for each user
-  for (let i = 0; i<users.length; i++){
-  // Me getting the info out:
-  //  console.log(users[i].screenTime[0]);
-  //  console.log(users[i].screenTime[0].date);
-  //  console.log(users[i].screenTime[0].usage); 
-  
+  users.forEach((user)=>{
     //loop through screentime to find the given date
-    for (let f=0 ; f<users[i].screenTime.length ; f++){
+    for (let f=0 ; f<user.screenTime.length ; f++){
       //add screentime for given date
-      if (users[i].screenTime[f].date == date){
+      if (user.screenTime[f].date == date){
         let total = 0;
-        for(var time in users[i].screenTime[f].usage){
+        for(var time in user.screenTime[f].usage){
           //console.log(time); // alerts key
           //console.log(users[i].screenTime[0].usage[time]); //alerts key's value
-          total += users[i].screenTime[f].usage[time];
+          total += user.screenTime[f].usage[time];
         }     
         
-        //console.log("Total: "+ total);
-        //is > 100? add to list
+        //is >= 100? add to list
         if (total >= 100){
-          array.push(users[i].username);
+          array.push(user.username);
         }
       }
     }
-  }
-  //console.log("user list: "+ array);
-  return array;
+  });
 
+  return array;
 };
 
 /**
@@ -153,13 +144,27 @@ const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
 
   let retVal = null;
- // to collect the vertical results -> check them at the end
-  let array1 = [];
-  let array2 = [];
-  let array3 = [];
+
 
   //console.log("####### NEW GAME! #######")
 
+  const isX = (currentValue) => currentValue == 'X';
+  const is0 = (currentValue) => currentValue == '0';
+
+  //For each horizontal line in array
+  board.forEach((row)=>{
+      if (row.every(isX))
+        retVal = 'X';
+      if (row.every(is0))
+        retVal = '0';  
+  })
+/*
+ // to collect the vertical results -> check them at the end
+ let array1 = [];
+ let array2 = [];
+ let array3 = [];
+
+  /*
   //For each horizontal line in array
   for (let i = 0; i<3 ; i++) {
 
@@ -216,7 +221,7 @@ const findWinner = board => {
   if ((array3[0] == "0") && (array3[1] =="0") && (array3[2]=="0") ){
       return "0";
   }
-
+*/
   return retVal; //return null if neither x nor 0 won
 };
 

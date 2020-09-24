@@ -9,15 +9,13 @@ const sumMultiples = arr => {
   
   let total = 0;
   // for each number in array
-  for (let i=0; i<arr.length; i++){
-    // check is multiple of 3
-    if (! (arr[i] % 3)){
-      total = total + arr[i];
-    } else if (! (arr[i] % 5)){
-      total = total + arr[i];
-    } 
-
-  }
+  arr.forEach(num =>{
+    // check is multiple of 3 or 5
+    if (!(num % 3))
+      total += num;
+    else if (!(num % 5))
+      total += num;
+  })
   return total;
 };
 
@@ -53,27 +51,10 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  
+  //Use regex and .replace on the string
+  return str.replace( /[ATCG]/g, function( c ){ return { 'A': 'T', 'T': 'A','C':'G','G': 'C' }[ c ] } )
 
-  let DNAString = str.split("");
-  let newString = "";
-
-  DNAString.forEach(letter => {
-    if (letter === "A") {
-      newString = newString + "T";
-    }
-    if (letter === "T") {
-      newString = newString + "A";
-    }
-    if (letter === "G") {
-      newString = newString + "C";
-    }
-    if (letter === "C") {
-      newString = newString + "G";
-    }
-
-  });
-
-  return newString;
 };
 
 /**
@@ -87,7 +68,10 @@ const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
 
   let d = n-1;
+
+  // Check each possible number to divide n by
   while (d > 1){
+    // if it can be divided by another number not prime
     if ((n % d) == 0){ 
       return false;
     }  
@@ -115,23 +99,7 @@ const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
 
-
-  // Create 1D array 
-  let array = new Array(n); 
-    
-  // Loop to create 2D array using 1D array 
-  for (let i = 0; i < array.length; i++) { 
-      array[i] = new Array(n); 
-  } 
-    
-  // Loop to init 2D array elements. 
-  for (let i = 0; i < n; i++) { 
-      for (let j = 0; j < n; j++) { 
-          array[i][j] = fill; 
-      } 
-  } 
-
-  return array;
+  return Array(n).fill().map(()=>Array(n).fill(fill));
 
 };
 
@@ -154,12 +122,12 @@ const areWeCovered = (staff, day) => {
   let count = 0;
   
   // loop through rota and count day
-  for (let i=0 ; i < staff.length; i++) {
-    if (staff[i].rota.find(element => element === day))
-        count++;
-  }
-  
-  //console.log("Count is: "+ count);
+  staff.forEach((staff)=>{
+    if (staff.rota.find(element => element === day ))
+      count++;
+  })
+
+  // if 3 or more then there are enough staff available for that day
   return (count >= 3);
 
 };
