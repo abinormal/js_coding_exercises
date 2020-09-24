@@ -145,9 +145,6 @@ const findWinner = board => {
 
   let retVal = null;
 
-
-  //console.log("####### NEW GAME! #######")
-
   const isX = (currentValue) => currentValue == 'X';
   const is0 = (currentValue) => currentValue == '0';
 
@@ -158,70 +155,23 @@ const findWinner = board => {
       if (row.every(is0))
         retVal = '0';  
   })
-/*
- // to collect the vertical results -> check them at the end
- let array1 = [];
- let array2 = [];
- let array3 = [];
 
-  /*
-  //For each horizontal line in array
+  let newArray = Array(3).fill().map(()=>Array(3).fill(undefined));
+
   for (let i = 0; i<3 ; i++) {
-
-    //console.log("#### EACH ROW ####")
-    let horizontalX = 0; 
-    let horizontal0 = 0;
     for (let j = 0; j<3 ; j++){
-      //For each horizontal line in array
-      
-      //console.log("Iterating through: "+board[i][j]);
-      if (board[i][j] == "X") {
-        horizontalX++;
-        //console.log("FOund an X!");
-      }
-      if (board[i][j] == "0") {
-        horizontal0++;
-        //console.log("FOund a zero");
-      }
-      // console.log("Horizontal 0: "+horizontal0);
-      // console.log("Horizontal x: "+horizontalX);
-      if (horizontalX == 3)
-        return "X";
-      if (horizontal0 == 3)
-        return "0";
-
       // Save Vertical entries to new array
-      if (j == 0){
-        array1.push(board[i][j]);
-      } else if (j == 1){
-        array2.push(board[i][j]);
-      } else {
-        array3.push(board[i][j]);
-      }
-
+      newArray[j][i] = board[i][j];
     }
-  }
+  } 
+  //console.log("NEW ARRAY: ", newArray);
+  newArray.forEach((row)=>{
+    if (row.every(isX))
+      retVal = 'X';
+    if (row.every(is0))
+      retVal = '0';  
+  })
   
-  if ((array1[0] == "X") && (array1[1] =="X") && (array1[2]=="X") ){
-    return "X";
-  }
-  if ((array2[0] == "X") && (array2[1] =="X") && (array2[2]=="X") ){
-      return "X";
-  }
-  if ((array3[0] == "X") && (array3[1] =="X") && (array3[2]=="X") ){
-      return "X";
-  }
-
-  if ((array1[0] == "0") && (array1[1] =="0") && (array1[2]=="0") ){
-      return "0";
-  }
-  if ((array2[0] == "0") && (array2[1] =="0") && (array2[2]=="0") ){
-      return "0";
-  }
-  if ((array3[0] == "0") && (array3[1] =="0") && (array3[2]=="0") ){
-      return "0";
-  }
-*/
   return retVal; //return null if neither x nor 0 won
 };
 
