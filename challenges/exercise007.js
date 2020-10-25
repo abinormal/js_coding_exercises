@@ -140,37 +140,66 @@ const hexToRGB = hexStr => {
  * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
  * @param {Array} board
  */
+
+const isRow = (arr => {
+  let ret = null
+    
+  const isX = (currentValue) => currentValue == 'X';
+  const is0 = (currentValue) => currentValue == '0';
+  console.log(arr);
+  arr.forEach(row => {
+    if (row.every(isX)) {
+      console.log("Found X!");
+      ret = 'X';
+    } else if (row.every(is0)) {
+      console.log("Found 0!");
+      ret = '0';
+    }
+  })
+  return ret;
+});
+  
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
 
   let retVal = null;
-
-  const isX = (currentValue) => currentValue == 'X';
-  const is0 = (currentValue) => currentValue == '0';
-
-  //For each horizontal line in array
-  board.forEach((row)=>{
-      if (row.every(isX))
-        retVal = 'X';
-      if (row.every(is0))
-        retVal = '0';  
-  })
-
-  let newArray = Array(3).fill().map(()=>Array(3).fill(undefined));
-
+    
+  retVal = isRow(board);
+  
+  // Create a new array
+  let newArray = Array(3).fill().map(() => Array(3).fill(undefined));
+  // Fill with values - putting the board on it's side
   for (let i = 0; i<3 ; i++) {
     for (let j = 0; j<3 ; j++){
       // Save Vertical entries to new array
       newArray[j][i] = board[i][j];
     }
   } 
-  //console.log("NEW ARRAY: ", newArray);
-  newArray.forEach((row)=>{
-    if (row.every(isX))
-      retVal = 'X';
-    if (row.every(is0))
-      retVal = '0';  
-  })
+  retVal = isRow(newArray);
+  
+  //For each horizontal line in array
+  // board.forEach((row)=>{
+  //     if (row.every(isX))
+  //       retVal = 'X';
+  //     if (row.every(is0))
+  //       retVal = '0';  
+  // })
+
+  // let newArray = Array(3).fill().map(()=>Array(3).fill(undefined));
+
+  // for (let i = 0; i<3 ; i++) {
+  //   for (let j = 0; j<3 ; j++){
+  //     // Save Vertical entries to new array
+  //     newArray[j][i] = board[i][j];
+  //   }
+  // } 
+  // //console.log("NEW ARRAY: ", newArray);
+  // newArray.forEach((row)=>{
+  //   if (row.every(isX))
+  //     retVal = 'X';
+  //   if (row.every(is0))
+  //     retVal = '0';  
+  // })
   
   return retVal; //return null if neither x nor 0 won
 };
